@@ -1,0 +1,10 @@
+CMakeFiles/
+CMakeCache.txt
+*.a
+Makefile
+*.cmake
+.vscode/
+.idea/
+cmake-*/
+.ninja*
+build/
