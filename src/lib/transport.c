@@ -5,7 +5,7 @@
 #include <datagram-transport/transport.h>
 
 /// Initializes the datagram transport
-/// @param self
+/// @param self transport
 /// @param userPointer defined by the transport
 /// @param send send function
 /// @param receive receive function
@@ -19,9 +19,9 @@ void datagramTransportInit(DatagramTransport* self, void* userPointer, DatagramT
 
 /// Tries to receive a datagram
 /// It can be blocking and non-blocking depending on the configuration of the transport.
-/// @param self
-/// @param data
-/// @param size
+/// @param self transport
+/// @param target the buffer to write received octets to
+/// @param maxOctetCount maximum octet size of target
 /// @return negative on error, positive numbers represents the number of octets received.
 ssize_t datagramTransportReceive(DatagramTransport* self, uint8_t* target, size_t maxOctetCount)
 {
@@ -29,9 +29,9 @@ ssize_t datagramTransportReceive(DatagramTransport* self, uint8_t* target, size_
 }
 
 /// Tries to send a datagram over the transport
-///@param self
-///@param source
-///@param octetCount
+///@param self transport
+///@param source octets to send
+///@param octetCount number of octets to send from the source buffer
 ///@return negative on error
 int datagramTransportSend(DatagramTransport* self, const uint8_t* source, size_t octetCount)
 {

@@ -6,11 +6,11 @@
 
 /// Tries to receive a datagram
 /// Can be blocking or non-blocking
-/// @param self
+/// @param self multi transport
 /// @param addressIndex the address index that the datagram was received from
 /// @param target the buffer to write the datagram to
 /// @param maxOctetCount maximum size in octets of the target buffer
-/// @return
+/// @return number of octets received and written to target
 int datagramTransportMultiReceiveFrom(DatagramTransportMulti* self, int* addressIndex, uint8_t* target,
                                       size_t maxOctetCount)
 {
@@ -18,11 +18,11 @@ int datagramTransportMultiReceiveFrom(DatagramTransportMulti* self, int* address
 }
 
 /// Send to a specific address referred to by an index
-/// @param self
+/// @param self multi transport
 /// @param addressIndex the address index to send to
 /// @param source the octet payload to send
 /// @param octetCount the number of octets in source
-/// @return
+/// @return negative on error
 int datagramTransportMultiSendTo(DatagramTransportMulti* self, int addressIndex, const uint8_t* source,
                                  size_t octetCount)
 {
