@@ -11,7 +11,7 @@
 /// @param target the buffer to write the datagram to
 /// @param maxOctetCount maximum size in octets of the target buffer
 /// @return number of octets received and written to target
-int datagramTransportMultiReceiveFrom(DatagramTransportMulti* self, int* addressIndex, uint8_t* target,
+ssize_t datagramTransportMultiReceiveFrom(DatagramTransportMulti* self, int* addressIndex, uint8_t* target,
                                       size_t maxOctetCount)
 {
     return self->receiveFrom(self->self, addressIndex, target, maxOctetCount);

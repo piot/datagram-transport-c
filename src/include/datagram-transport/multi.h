@@ -7,11 +7,12 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <sys/types.h>
 
 typedef int (*DatagramTransportMultiSendFn)(void* self, int addressIndex, const uint8_t* const source,
                                             size_t octetCount);
-typedef int (*DatagramTransportMultiReceiveFn)(void* self, int* receivedFromAddressIndex, uint8_t* target,
-                                               size_t maxOctetCount);
+typedef ssize_t (*DatagramTransportMultiReceiveFn)(void* self, int* receivedFromAddressIndex, uint8_t* target,
+                                                   size_t maxOctetCount);
 
 typedef struct DatagramTransportMulti {
     DatagramTransportMultiReceiveFn receiveFrom;
@@ -29,7 +30,7 @@ typedef struct DatagramTransportMultiIn {
     void* self;
 } DatagramTransportMultiIn;
 
-int datagramTransportMultiReceiveFrom(DatagramTransportMulti* transport, int* addressIndex, uint8_t* target,
+ssize_t datagramTransportMultiReceiveFrom(DatagramTransportMulti* transport, int* addressIndex, uint8_t* target,
                                       size_t maxOctetCount);
 int datagramTransportMultiSendTo(DatagramTransportMulti* transport, int addressIndex, const uint8_t* source,
                                  size_t octetCount);

@@ -17,7 +17,7 @@ static ssize_t receive(void* _self, uint8_t* data, size_t size)
     DatagramTransportSingleToFromMulti* self = (DatagramTransportSingleToFromMulti*) _self;
     while (true) {
         int foundConnectionIndex;
-        int octetCountRead = self->multi.receiveFrom(self->multi.self, &foundConnectionIndex, data, size);
+        ssize_t octetCountRead = self->multi.receiveFrom(self->multi.self, &foundConnectionIndex, data, size);
         if (octetCountRead <= 0) {
             return octetCountRead;
         }
